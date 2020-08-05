@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+  argus:
+    build: argus-node
+    image: argus-node
+    networks:
+      - test
+    hostname: argus
+    container_name: argus
+  web-proxy:
+    build: argus-proxy
+    image: argus-proxy
+    networks:
+      - test
+    hostname: argus-proxy
+    depends_on:
+      - argus
+    container_name: argus-proxy
+  web-app-a:
+    build: argus-web-app
+    image: argus-web-app
+    depends_on:
+      - argus
+    networks:
+      - test
+  web-app-b:
+    build: argus-web-app
+    image: argus-web-app
+    depends_on:
+      - argus
+    networks:
+      - test
+
+networks:
+  test:

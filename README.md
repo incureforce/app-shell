@@ -24,7 +24,7 @@ When it launches it registers config values under `service.proxy` (hostname).
 const os = require('os')
 
 module.exports = {
-    url: "http://argus-server/",
+    url: "http://argus/",
 
     startup: function (ctx) {
         ctx.update('services.proxy', {
@@ -46,7 +46,7 @@ When it launches it fetches all config values under `service.proxy` and prints t
 
 ```javascript
 module.exports = {
-    url: "http://argus-server/",
+    url: "http://argus/",
 
     startup: function (ctx) {
         ctx.notify('services.proxy', function (path, content) {
@@ -58,3 +58,47 @@ module.exports = {
     },
 }
 ```
+
+#### docker-compose sample
+
+You can try it out yourself: [Link](./test/docker-compose.yml)
+
+```docker-compose
+version: "3.3"
+services:
+  argus:
+    build: argus-node
+    image: argus-node
+    networks:
+      - test
+    hostname: argus
+    container_name: argus
+  web-proxy:
+    build: argus-proxy
+    image: argus-proxy
+    networks:
+      - test
+    hostname: argus-proxy
+    depends_on:
+      - argus
+    container_name: argus-proxy
+  web-app-a:
+    build: argus-web-app
+    image: argus-web-app
+    depends_on:
+      - argus
+    networks:
+      - test
+  web-app-b:
+    build: argus-web-app
+    image: argus-web-app
+    depends_on:
+      - argus
+    networks:
+      - test
+
+networks:
+  test:
+```
+
+![docker-compose](./wiki/01-docker-compose.png)

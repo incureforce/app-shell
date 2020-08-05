@@ -1,7 +1,7 @@
 const os = require('os')
 
 module.exports = {
-    url: "http://localhost/",
+    url: "http://argus/",
 
     startup: function (ctx) {
         ctx.update('services.proxy', {

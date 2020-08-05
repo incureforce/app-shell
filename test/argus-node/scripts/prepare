@@ -1,0 +1,5 @@
+#!/bin/ash
+
+apk add git npm nodejs
+
+npm install -g incureforce/argus-node

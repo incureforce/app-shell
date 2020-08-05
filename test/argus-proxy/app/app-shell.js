@@ -1,5 +1,5 @@
 module.exports = {
-    url: "http://localhost/",
+    url: "http://argus/",
 
     startup: function (ctx) {
         ctx.notify('services.proxy', function (path, content) {
