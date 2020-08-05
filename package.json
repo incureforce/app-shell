@@ -1,0 +1,30 @@
+{
+  "main": "index.js",
+  "name": "argus-node",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/incureforce/argus-node.git"
+  },
+  "bin": {
+    "argus-node": "./bin/argus-node"
+  },
+  "description": "Container lifecycle watcher and config distribution with websockets",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "ws",
+    "docker",
+    "container"
+  ],
+  "author": "incureforce",
+  "license": "MIT"
+}
